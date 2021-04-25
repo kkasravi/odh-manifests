@@ -6,4 +6,4 @@ resources:
 - overlays/opendatahub
 commonLabels:
   application-crd-id: kubeflow-pipelines
-namespace: opendatahub
+namespace: opendatahub-kfp-tekton

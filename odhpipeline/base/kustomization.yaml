@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - crds
 - https://raw.githubusercontent.com/kubeflow/pipelines/1.5.0/manifests/kustomize/base/installs/generic/pipeline-install-config.yaml
+- https://raw.githubusercontent.com/kubeflow/pipelines/1.5.0/manifests/kustomize/base/installs/generic/mysql-secret.yaml
 - github.com/kubeflow/pipelines//manifests/kustomize/base/pipeline/?ref=1.5.0
 - github.com/kubeflow/pipelines//manifests/kustomize/base/metadata/overlays/db/?ref=1.5.0
 #- github.com/kubeflow/pipelines//manifests/kustomize/base/cache/?ref=1.5.0
