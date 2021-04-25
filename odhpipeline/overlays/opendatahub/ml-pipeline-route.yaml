@@ -9,5 +9,5 @@ spec:
     targetPort: http
   to:
     kind: Service
-    name: ml-pipeline-ui-service
+    name: ml-pipeline-ui
     weight: 100
