@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - third-party
-- base
+- overlays/opendatahub
 commonLabels:
   application-crd-id: kubeflow-pipelines
 namespace: opendatahub
