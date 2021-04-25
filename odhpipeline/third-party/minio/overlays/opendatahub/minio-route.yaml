@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: minio
+  name: minio
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: minio-service
+    weight: 100
