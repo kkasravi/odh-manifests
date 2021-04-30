@@ -1,29 +1,28 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-bases:
-  - ../../base
 resources:
-  - clusterrolebinding.yaml
+- clusterrolebinding.yaml
+- github.com/kkasravi/odh-dashboard//install/deploy/?ref=kkasravi/applications
 patchesJson6902:
   - path: deployment.yaml
     target:
       group: apps
       version: v1
       kind: Deployment
-      name: odh-dashboard
+      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - path: service-account.yaml
     target:
       kind: ServiceAccount
       version: v1
-      name: odh-dashboard
+      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - path: service.yaml
     target:
       kind: Service
       version: v1
-      name: odh-dashboard
+      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - target:
       group: route.openshift.io
       version: v1
       kind: Route
-      name: odh-dashboard
+      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
     path: route.yaml
