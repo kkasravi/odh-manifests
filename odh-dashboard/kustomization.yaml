@@ -9,10 +9,10 @@ vars:
 - name: DASHBOARD_NAME
   objref:
     kind: Namespace
-    name: kam
+    name: kam # {"$openapi":"NAMESPACE_NAME"}
     apiVersion: v1
   fieldref:
     fieldpath: metadata.labels.app
 configurations:
 - varreference.yaml
-namespace: kam
+namespace: kam  # {"$openapi":"NAMESPACE_NAME"}

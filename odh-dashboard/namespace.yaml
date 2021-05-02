@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kam
+  name: kam # {"$openapi":"NAMESPACE_NAME"}

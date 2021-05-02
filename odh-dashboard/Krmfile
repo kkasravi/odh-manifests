@@ -10,6 +10,14 @@ openAPI:
           value: kam-dashboard
           isSet: true
           required: true
+    io.k8s.cli.setters.NAMESPACE_NAME:
+      description: namespace name
+      x-k8s-cli:
+        setter:
+          name: NAMESPACE_NAME
+          value: kam
+          isSet: true
+          required: true
     io.k8s.cli.setters.REPLICAS:
       type: integer
       description: dashboard name
