@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- github.com/kkasravi/odh-manifests//jupyterhub/jupyterhub/overrides/overlays/jupyterhub-deployment-patch/?ref=master
+- github.com/kkasravi/odh-manifests//jupyterhub/jupyterhub/overrides/overlays/jupyterhub-deployment-patch/?ref=kkasravi/pipelines
 - github.com/opendatahub-io/odh-manifests//jupyterhub/notebook-images/overlays/additional/?ref=master
 namespace: redhat-ods-applications
