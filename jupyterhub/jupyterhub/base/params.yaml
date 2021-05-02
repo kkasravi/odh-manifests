@@ -1,5 +1,4 @@
 varReference:
-  apiGroup: authorization.openshift.io
 - path: data
   kind: ConfigMap
 - path: metadata/annotations/volume.beta.kubernetes.io\/storage-class
