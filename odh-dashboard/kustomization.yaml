@@ -3,6 +3,7 @@ kind: Kustomization
 commonLabels:
   app: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
 resources:
+- third-party
 - namespace.yaml
 - overlays/authentication
 vars:
