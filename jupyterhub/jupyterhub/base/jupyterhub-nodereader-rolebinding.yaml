@@ -11,4 +11,3 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: jupyterhub-hub
-  namespace: $(namespace)
