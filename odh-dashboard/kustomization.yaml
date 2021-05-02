@@ -3,7 +3,9 @@ kind: Kustomization
 commonLabels:
   app: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
 resources:
-- third-party
+#- third-party
+- github.com/kkasravi/odh-manifests//jupyterhub/jupyterhub/overrides/overlays/jupyterhub-deployment-patch/?ref=kkasravi/pipelines
+- github.com/opendatahub-io/odh-manifests//jupyterhub/notebook-images/overlays/additional/?ref=master
 - namespace.yaml
 - overlays/authentication
 vars:

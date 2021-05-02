@@ -18,16 +18,16 @@ resources:
 - jupyterhub-singleuser-profiles-sizes-configmap.yaml
 - jupyterhub-spark-operator-configmap.yaml
 - jupyterhub-groups-configmap.yaml
-
 commonLabels:
   opendatahub.io/component: "true"
   component.opendatahub.io/name: jupyterhub
-
 configMapGenerator:
 - name: parameters
-  env: params.env
+  envs:
+  - params.env
 generatorOptions:
   disableNameSuffixHash: true
+vars:
 - name: storage_class
   objref:
     kind: ConfigMap
