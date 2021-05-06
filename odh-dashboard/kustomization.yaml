@@ -15,4 +15,8 @@ vars:
     fieldpath: metadata.labels.app
 configurations:
 - varreference.yaml
+images:
+- name: s2i-odh-dashboard
+  newName: s2i-kam-dashboard # {"$openapi":"IMAGE_NAME"}
+  newTag: v0.0.1 # {"$openapi":"TAG_NAME"}
 namespace: kam # {"$openapi":"NAMESPACE_NAME"}

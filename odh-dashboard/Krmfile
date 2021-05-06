@@ -18,3 +18,19 @@ openAPI:
           value: kam
           isSet: true
           required: true
+    io.k8s.cli.setters.IMAGE_NAME:
+      description: image name
+      x-k8s-cli:
+        setter:
+          name: IMAGE_NAME
+          value: s2i-kam-dashboard
+          isSet: true
+          required: true
+    io.k8s.cli.setters.TAG_NAME:
+      description: tag name
+      x-k8s-cli:
+        setter:
+          name: TAG_NAME
+          value: v0.0.1
+          isSet: true
+          required: true
