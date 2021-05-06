@@ -17,3 +17,9 @@ data:
           value: https://github.com/oneapi-src/oneAPI-samples
         - name: JUPYTER_WORKSPACE_PATH
           value: oneAPI-samples/AI-and-Analytics
+        resources:
+          memory: "2Gi"
+          cpu: "2"
+        limits:
+          memory: "2Gi"
+          cpu: "2"

@@ -15,4 +15,4 @@ vars:
     fieldpath: metadata.labels.app
 configurations:
 - varreference.yaml
-namespace: kam  # {"$openapi":"NAMESPACE_NAME"}
+namespace: kam # {"$openapi":"NAMESPACE_NAME"}

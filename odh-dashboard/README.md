@@ -15,7 +15,12 @@ For more information, visit the project [GitHub repo](https://github.com/opendat
    Open Data Hub Dashboard configured to require users to authenticate to the
    OpenShift cluster before they can access the service
 
-##### Installation
+#### Installation
+
+##### Using kfdefs:
+
+Add a component to kfdefs:
+
 ```
   - kustomizeConfig:
       repoRef:
@@ -23,7 +28,6 @@ For more information, visit the project [GitHub repo](https://github.com/opendat
         path: odh-dashboard
     name: odh-dashboard
 ```
-
 If you would like to configure the dashboard to require authentication:
 ```
   - kustomizeConfig:
@@ -34,3 +38,14 @@ If you would like to configure the dashboard to require authentication:
         path: odh-dashboard
     name: odh-dashboard
 ```
+
+##### Standalone deployment:
+
+```
+$ kustomize cfg list-setters . -R # lists setters
+$ kustomize cfg set . NAMESPACE_NAME <namespace> -R # default=redhat-ods-applications
+$ kustomize cfg set . DASHBOARD_NAME <dashboard-name> -R # default=odh-dashboard
+$ kustomize cfg list-setters . -R # verify changes
+$ kustomize build | kubectl apply -f -  # deploy
+```
+
