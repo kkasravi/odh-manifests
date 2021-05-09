@@ -49,3 +49,16 @@ $ kustomize cfg list-setters . -R # verify changes
 $ kustomize build | kubectl apply -f -  # deploy
 ```
 
+##### Standalone cleanup:
+
+This will leave the namespace and any resources not labeled with `app: <dashboard-name>`
+
+```
+$ kustomize build | kubectl delete -f - -l 'app in (<dashboard-name>)'
+```
+
+This will also delete the namespace
+
+```
+$ kustomize build | kubectl delete -f - 
+```
