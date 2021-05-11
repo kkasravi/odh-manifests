@@ -66,12 +66,12 @@ spec:
         - name: JUPYTERHUB_ADMIN_GROUPS
           valueFrom:
             configMapKeyRef:
-              name: $(jupyterhub_groups_config)
+              name: kamhub-default-groups-config # {"$openapi":"APPLICATION_DEFAULT_GROUPS_CONFIG"}
               key: admin_groups
         - name: JUPYTERHUB_ALLOWED_GROUPS
           valueFrom:
             configMapKeyRef:
-              name: $(jupyterhub_groups_config)
+              name: kamhub-default-groups-config # {"$openapi":"APPLICATION_DEFAULT_GROUPS_CONFIG"}
               key: allowed_groups
         - name: JUPYTERHUB_CRYPT_KEY
           valueFrom:
@@ -88,7 +88,7 @@ spec:
             secretKeyRef:
               name: $(jupyterhub_secret)
               key: CONFIGPROXY_AUTH_TOKEN
-        image: jupyterhub-img:latest
+        image: kamhub-img:latest # {"$openapi":"APPLICATION_IMG_TAG"}
         name: kamhub # {"$openapi":"APPLICATION_NAME"}
         ports:
         - containerPort: 8080
@@ -110,7 +110,7 @@ spec:
               key: POSTGRESQL_PASSWORD
         - name: JUPYTERHUB_DATABASE_HOST
           value: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
-        image: jupyterhub-img:latest
+        image: kamhub-img:latest # {"$openapi":"APPLICATION_IMG_TAG"}
         name: wait-for-database
         resources:
           limits:

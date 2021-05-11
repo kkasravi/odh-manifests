@@ -34,6 +34,14 @@ openAPI:
           values:
           - marker: ${APPLICATION_NAME}
             ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_IMG_TAG:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_IMG_TAG
+          pattern: ${APPLICATION_NAME}-img:latest
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
     io.k8s.cli.substitutions.APPLICATION_DB_NAME:
       x-k8s-cli:
         substitution:

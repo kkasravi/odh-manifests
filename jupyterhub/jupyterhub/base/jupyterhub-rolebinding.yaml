@@ -5,7 +5,7 @@ metadata:
     app: kamhub # {"$openapi":"APPLICATION_NAME"}
   name: kamhub # {"$openapi":"APPLICATION_NAME"}
 roleRef:
-  apiGroup: authorization.openshift.io
+  apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: kamhub # {"$openapi":"APPLICATION_NAME"}
 subjects:

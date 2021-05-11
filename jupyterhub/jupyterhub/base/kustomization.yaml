@@ -35,13 +35,6 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.s3_endpoint_url
-- name: jupyterhub_groups_config
-  objref:
-    kind: ConfigMap
-    name: parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.jupyterhub_groups_config
 - name: jupyterhub_secret
   objref:
     kind: ConfigMap

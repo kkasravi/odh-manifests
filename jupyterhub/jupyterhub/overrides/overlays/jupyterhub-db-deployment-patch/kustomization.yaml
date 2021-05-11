@@ -7,5 +7,5 @@ patchesJson6902:
     kind: DeploymentConfig
     version: v1
     group: apps.openshift.io
-    name: jupyterhub-db
+    name: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
   path: jupyterhub-db.patch
