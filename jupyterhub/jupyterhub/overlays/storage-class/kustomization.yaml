@@ -2,6 +2,21 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
+configMapGenerator:
+- name: parameters
+  behavior: merge
+  envs:
+  - params.env
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: storage_class
+  objref:
+    kind: ConfigMap
+    name: parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.storage_class
 patchesJson6902:
 - target:
     kind: PersistentVolumeClaim
@@ -19,3 +34,5 @@ patchesJson6902:
     version: v1
     name: jupyterhub
   path: jupyterhub-dc.patch
+configurations:
+- params.yaml

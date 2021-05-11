@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - jupyterhub/overrides/overlays/jupyterhub-deployment-patch
 - notebook-images/overlays/additional
-namespace: redhat-ods-applications # {"$openapi":"NAMESPACE_NAME"}
+namespace: kdm # {"$openapi":"NAMESPACE_NAME"}

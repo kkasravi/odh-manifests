@@ -1,0 +1,3 @@
+varReference:
+- path: metadata/annotations/volume.beta.kubernetes.io\/storage-class
+  kind: PersistentVolumeClaim

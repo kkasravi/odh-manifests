@@ -7,6 +7,6 @@ openAPI:
       x-k8s-cli:
         setter:
           name: NAMESPACE_NAME
-          value: redhat-ods-applications
+          value: kdm
           isSet: true
           required: true

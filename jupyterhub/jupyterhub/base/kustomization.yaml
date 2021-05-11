@@ -28,13 +28,6 @@ configMapGenerator:
 generatorOptions:
   disableNameSuffixHash: true
 vars:
-- name: storage_class
-  objref:
-    kind: ConfigMap
-    name: parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.storage_class
 - name: s3_endpoint_url
   objref:
     kind: ConfigMap
