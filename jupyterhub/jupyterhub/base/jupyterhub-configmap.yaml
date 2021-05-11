@@ -2,8 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    app: jupyterhub
-  name: jupyterhub-cfg
+    app: kamhub # {"$openapi":"APPLICATION_NAME"}
+  name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
 data:
   jupyterhub_config.py: ""
   jupyterhub_admins: "admin"

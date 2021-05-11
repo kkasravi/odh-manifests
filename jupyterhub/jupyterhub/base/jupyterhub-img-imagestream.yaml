@@ -1,8 +1,7 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  labels: {}
-  name: jupyterhub-img
+  name: kamhub-img # {"$openapi":"APPLICATION_IMG_NAME"}
 spec:
   lookupPolicy:
     local: true

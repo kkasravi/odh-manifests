@@ -7,6 +7,62 @@ openAPI:
       x-k8s-cli:
         setter:
           name: NAMESPACE_NAME
-          value: kdm
+          value: kam
           isSet: true
           required: true
+    io.k8s.cli.setters.APPLICATION_NAME:
+      description: application name
+      x-k8s-cli:
+        setter:
+          name: APPLICATION_NAME
+          value: kamhub
+          isSet: true
+          required: true
+    io.k8s.cli.substitutions.APPLICATION_CFG_NAME:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_CFG_NAME
+          pattern: ${APPLICATION_NAME}-cfg
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_IMG_NAME:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_IMG_NAME
+          pattern: ${APPLICATION_NAME}-img
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_DB_NAME:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_DB_NAME
+          pattern: ${APPLICATION_NAME}-db
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_HUB_NAME:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_HUB_NAME
+          pattern: ${APPLICATION_NAME}-hub
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_DEFAULT_GROUPS_CONFIG:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_DEFAULT_GROUPS_CONFIG
+          pattern: ${APPLICATION_NAME}-default-groups-config
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'
+    io.k8s.cli.substitutions.APPLICATION_NODEREADER_NAME:
+      x-k8s-cli:
+        substitution:
+          name: APPLICATION_NODEREADER_NAME
+          pattern: ${APPLICATION_NAME}-nodereader
+          values:
+          - marker: ${APPLICATION_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.APPLICATION_NAME'

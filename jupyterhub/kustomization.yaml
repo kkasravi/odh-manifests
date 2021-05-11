@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - jupyterhub/overrides/overlays/jupyterhub-deployment-patch
 - notebook-images/overlays/additional
-namespace: kdm # {"$openapi":"NAMESPACE_NAME"}
+namespace: kam # {"$openapi":"NAMESPACE_NAME"}

@@ -2,16 +2,18 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   annotations:
-      app.openshift.io/connects-to: >-
-        [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"jupyterhub-db"}]
+    app.openshift.io/connects-to:
+    - apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
   labels:
-    app: jupyterhub
-  name: jupyterhub
+    app: kamhub # {"$openapi":"APPLICATION_NAME"}
+  name: kamhub # {"$openapi":"APPLICATION_NAME"}
 spec:
   replicas: 1
   selector:
-    app: jupyterhub
-    deploymentconfig: jupyterhub
+    app: kamhub # {"$openapi":"APPLICATION_NAME"}
+    deploymentconfig: kamhub # {"$openapi":"APPLICATION_NAME"}
   strategy:
     recreateParams:
       timeoutSeconds: 1200
@@ -22,23 +24,23 @@ spec:
         alpha.image.policy.openshift.io/resolve-names: '*'
         sidecar.istio.io/inject: "true"
       labels:
-        app: jupyterhub
-        deploymentconfig: jupyterhub
+        app: kamhub # {"$openapi":"APPLICATION_NAME"}
+        deploymentconfig: kamhub # {"$openapi":"APPLICATION_NAME"}
         component: web
-        component.opendatahub.io/name: jupyterhub
+        component.opendatahub.io/name: kamhub # {"$openapi":"APPLICATION_NAME"}
         opendatahub.io/component: 'true'
     spec:
       containers:
       - env:
         - name: JUPYTERHUB_SERVICE_NAME
-          value: jupyterhub
+          value: kamhub # {"$openapi":"APPLICATION_NAME"}
         - name: JUPYTERHUB_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: $(jupyterhub_secret)
               key: POSTGRESQL_PASSWORD
         - name: JUPYTERHUB_DATABASE_HOST
-          value: jupyterhub-db
+          value: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
         - name: PROMETHEUS_API_TOKEN
           valueFrom:
             secretKeyRef:
@@ -49,17 +51,17 @@ spec:
         - name: GPU_MODE
           valueFrom:
             configMapKeyRef:
-              name: jupyterhub-cfg
+              name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
               key: gpu_mode
         - name: JUPYTERHUB_ADMIN_USERS
           valueFrom:
             configMapKeyRef:
-              name: jupyterhub-cfg
+              name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
               key: jupyterhub_admins
         - name: SINGLEUSER_PVC_SIZE
           valueFrom:
             configMapKeyRef:
-              name: jupyterhub-cfg
+              name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
               key: singleuser_pvc_size
         - name: JUPYTERHUB_ADMIN_GROUPS
           valueFrom:
@@ -87,7 +89,7 @@ spec:
               name: $(jupyterhub_secret)
               key: CONFIGPROXY_AUTH_TOKEN
         image: jupyterhub-img:latest
-        name: jupyterhub
+        name: kamhub # {"$openapi":"APPLICATION_NAME"}
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -107,20 +109,19 @@ spec:
               name: $(jupyterhub_secret)
               key: POSTGRESQL_PASSWORD
         - name: JUPYTERHUB_DATABASE_HOST
-          value: jupyterhub-db
+          value: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
         image: jupyterhub-img:latest
         name: wait-for-database
         resources:
           limits:
             memory: 1Gi
-      serviceAccountName: jupyterhub-hub
+      serviceAccountName: kamhub-hub # {"$openapi":"APPLICATION_HUB_NAME"}
       imagePullSecrets:
       - name: addon-managed-odh-pullsecret
       volumes:
       - configMap:
           defaultMode: 420
-          name: jupyterhub-cfg
+          name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
         name: config
   triggers:
   - type: ConfigChange
-

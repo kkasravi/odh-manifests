@@ -94,3 +94,20 @@ Contains build chain manifest for CUDA enabled ubi 7 based images, provides `ten
 Contains build chain manifest for CUDA 11.0.3 enabled ubi 8 based images with python 3.8 support, provides `tensorflow-gpu` and `pytorch-gpu` enabled notebook image.
 
 *NOTE:* Builds in this overlay require 4-6 GB of memory
+
+
+##### Standalone deployment:
+
+```
+$ kustomize cfg list-setters . -R # lists setters
+$ kustomize cfg set . NAMESPACE_NAME <namespace> -R # default=redhat-ods-applications
+$ kustomize cfg set . APPLICATION_NAME <dashboard-name> -R # default=jupyterhub
+$ kustomize cfg list-setters . -R # verify changes
+$ kustomize build | kubectl apply -f -  # deploy
+```
+
+##### Standalone cleanup:
+
+```
+$ kustomize build | kubectl delete -f -
+```

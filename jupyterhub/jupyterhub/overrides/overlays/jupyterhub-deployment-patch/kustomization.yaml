@@ -8,5 +8,5 @@ patchesJson6902:
     kind: DeploymentConfig
     version: v1
     group: apps.openshift.io
-    name: jupyterhub
+    name: kamhub # {"$openapi":"APPLICATION_NAME"}
   path: jupyterhub.patch

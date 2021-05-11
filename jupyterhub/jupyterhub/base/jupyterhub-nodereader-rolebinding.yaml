@@ -2,12 +2,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   labels:
-    app: jupyterhub
-  name: jupyterhub-nodereader
+    app: kamhub # {"$openapi":"APPLICATION_NAME"}
+  name: kamhub-nodereader # {"$openapi":"APPLICATION_NODEREADER_NAME"}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: 'system:node-reader'
 subjects:
 - kind: ServiceAccount
-  name: jupyterhub-hub
+  name: kamhub-hub # {"$openapi":"APPLICATION_HUB_NAME"}

@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     volume.beta.kubernetes.io/storage-class: null
-  name: jupyterhub-db
+  name: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
 spec:
   accessModes:
   - ReadWriteOnce
