@@ -9,4 +9,4 @@ patchesJson6902:
     version: v1
     group: apps.openshift.io
     name: jupyterhub
-  path: jupyterhub-patch.yaml
+  path: jupyterhub.patch

@@ -8,4 +8,4 @@ patchesJson6902:
     version: v1
     group: apps.openshift.io
     name: jupyterhub-db
-  path: jupyterhub-db-patch.yaml
+  path: jupyterhub-db.patch

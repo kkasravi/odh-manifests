@@ -8,4 +8,4 @@ patchesJson6902:
     kind: DeploymentConfig
     version: v1
     name: jupyterhub
-  path: jupyterhub-dc.yaml
+  path: jupyterhub-dc.patch

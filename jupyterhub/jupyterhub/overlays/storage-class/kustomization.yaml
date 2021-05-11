@@ -7,15 +7,15 @@ patchesJson6902:
     kind: PersistentVolumeClaim
     version: v1
     name: jupyterhub-db
-  path: jupyterhub-db-pvc.yaml
+  path: jupyterhub-db-pvc.patch
 - target:
     kind: ConfigMap
     version: v1
     name: jupyterhub-cfg
-  path: jupyterhub-configmap.yaml
+  path: jupyterhub-configmap.patch
 - target:
     group: apps.openshift.io
     kind: DeploymentConfig
     version: v1
     name: jupyterhub
-  path: jupyterhub-dc.yaml
+  path: jupyterhub-dc.patch
