@@ -4,7 +4,7 @@ metadata:
   labels:
     component.opendatahub.io/name: jupyterhub
     opendatahub.io/component: "true"
-  name: kamhub-img # {"$openapi":"APPLICATION_IMG_NAME"}
+  name: jupyterhub-img # {"$openapi":"APPLICATION_IMG_NAME"}
 spec:
   lookupPolicy:
     local: true

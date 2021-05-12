@@ -2,12 +2,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    app: kamhub # {"$openapi":"APPLICATION_NAME"}
-  name: kamhub # {"$openapi":"APPLICATION_NAME"}
+    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+  name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: kamhub # {"$openapi":"APPLICATION_NAME"}
+  name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
 subjects:
 - kind: ServiceAccount
-  name: kamhub-hub # {"$openapi":"APPLICATION_HUB_NAME"}
+  name: jupyterhub-hub # {"$openapi":"APPLICATION_HUB_NAME"}

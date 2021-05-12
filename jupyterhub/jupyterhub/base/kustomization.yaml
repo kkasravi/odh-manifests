@@ -20,7 +20,7 @@ resources:
 - jupyterhub-groups-configmap.yaml
 commonLabels:
   opendatahub.io/component: "true"
-  component.opendatahub.io/name: kamhub # {"$openapi":"APPLICATION_NAME"}
+  component.opendatahub.io/name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
 configMapGenerator:
 - name: parameters
   envs:

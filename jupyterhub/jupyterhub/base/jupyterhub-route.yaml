@@ -2,8 +2,8 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: kamhub # {"$openapi":"APPLICATION_NAME"}
-  name: kamhub # {"$openapi":"APPLICATION_NAME"}
+    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+  name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
 spec:
   host: ''
   port:
@@ -13,5 +13,5 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: kamhub # {"$openapi":"APPLICATION_NAME"}
+    name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
     weight: 100

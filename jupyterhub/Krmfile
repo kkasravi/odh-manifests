@@ -15,7 +15,15 @@ openAPI:
       x-k8s-cli:
         setter:
           name: APPLICATION_NAME
-          value: kamhub
+          value: jupyterhub
+          isSet: true
+          required: true
+    io.k8s.cli.setters.STORAGE_CLASS:
+      description: storage class name
+      x-k8s-cli:
+        setter:
+          name: STORAGE_CLASS
+          value: gcp
           isSet: true
           required: true
     io.k8s.cli.substitutions.APPLICATION_CFG_NAME:

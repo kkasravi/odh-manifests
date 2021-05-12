@@ -2,37 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
-configMapGenerator:
-- name: parameters
-  behavior: merge
-  envs:
-  - params.env
-generatorOptions:
-  disableNameSuffixHash: true
-vars:
-- name: storage_class
-  objref:
-    kind: ConfigMap
-    name: parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.storage_class
-patchesJson6902:
-- target:
-    kind: PersistentVolumeClaim
-    version: v1
-    name: jupyterhub-db
-  path: jupyterhub-db-pvc.patch
-- target:
-    kind: ConfigMap
-    version: v1
-    name: jupyterhub-cfg
-  path: jupyterhub-configmap.patch
-- target:
-    group: apps.openshift.io
-    kind: DeploymentConfig
-    version: v1
-    name: jupyterhub
-  path: jupyterhub-dc.patch
-configurations:
-- params.yaml
+openapi:
+  path: openshift.json
+patchesStrategicMerge:
+- jupyterhub-configmap.yaml
+- jupyterhub-db-pvc.yaml
+- jupyterhub-dc.yaml

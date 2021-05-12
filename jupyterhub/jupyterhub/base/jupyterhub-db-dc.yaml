@@ -2,21 +2,21 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: kamhub # {"$openapi":"APPLICATION_NAME"}
-  name: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+  name: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
 spec:
   replicas: 1
   selector:
-    app: kamhub # {"$openapi":"APPLICATION_NAME"}
-    deploymentconfig: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+    deploymentconfig: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: kamhub # {"$openapi":"APPLICATION_NAME"}
-        deploymentconfig: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
-        component.opendatahub.io/name: kamhub # {"$openapi":"APPLICATION_NAME"}
+        app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+        deploymentconfig: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+        component.opendatahub.io/name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
         opendatahub.io/component: 'true'
       annotations:
         sidecar.istio.io/inject: "true"
@@ -25,14 +25,14 @@ spec:
       - image: registry.redhat.io/rhel8/postgresql-96
         env:
         - name: POSTGRESQL_USER
-          value: kamhub # {"$openapi":"APPLICATION_NAME"}
+          value: jupyterhub # {"$openapi":"APPLICATION_NAME"}
         - name: POSTGRESQL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: $(jupyterhub_secret)
               key: POSTGRESQL_PASSWORD
         - name: POSTGRESQL_DATABASE
-          value: kamhub # {"$openapi":"APPLICATION_NAME"}
+          value: jupyterhub # {"$openapi":"APPLICATION_NAME"}
         livenessProbe:
           tcpSocket:
             port: 5432
@@ -57,10 +57,10 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: kamhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+          claimName: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
       - configMap:
           defaultMode: 420
-          name: kamhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
+          name: jupyterhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
         name: config
   triggers:
   - type: ConfigChange
