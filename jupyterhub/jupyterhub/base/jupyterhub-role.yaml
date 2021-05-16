@@ -2,8 +2,8 @@ apiVersion: authorization.openshift.io/v1
 kind: Role
 metadata:
   labels:
-    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
-  name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
+    app: jupyterhub # {"$openapi":"JUPYTERHUB_NAME"}
+  name: jupyterhub # {"$openapi":"JUPYTERHUB_NAME"}
 rules:
 - apiGroups:
   - ''

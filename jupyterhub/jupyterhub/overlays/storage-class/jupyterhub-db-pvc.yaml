@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
-  annotations:
-    volume.beta.kubernetes.io/storage-class: gcp # {"$openapi":"STORAGE_CLASS"}

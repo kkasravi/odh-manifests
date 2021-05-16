@@ -1,9 +1,0 @@
-varReference:
-- path: data
-  kind: ConfigMap
-- path: spec/template/spec/containers/env/valueFrom/configMapKeyRef/name
-  kind: DeploymentConfig
-- path: spec/template/spec/containers/env/valueFrom/secretKeyRef/name
-  kind: DeploymentConfig
-- path: spec/template/spec/initContainers/env/valueFrom/secretKeyRef/name
-  kind: DeploymentConfig

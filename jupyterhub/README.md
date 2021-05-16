@@ -101,7 +101,7 @@ Contains build chain manifest for CUDA 11.0.3 enabled ubi 8 based images with py
 ```
 $ kustomize cfg list-setters . --include-subst -R # lists setters
 $ kustomize cfg set . NAMESPACE_NAME <namespace> -R # default=redhat-ods-applications
-$ kustomize cfg set . APPLICATION_NAME <dashboard-name> -R # default=jupyterhub
+$ kustomize cfg set . JUPYTERHUB_NAME <dashboard-name> -R # default=jupyterhub
 $ kustomize cfg list-setters . --include-subst -R # verify changes
 $ kustomize build | kubectl apply -f -  # deploy
 ```

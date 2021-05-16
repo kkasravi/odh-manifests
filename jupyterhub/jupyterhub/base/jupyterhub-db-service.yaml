@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
-  name: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+    app: jupyterhub # {"$openapi":"JUPYTERHUB_NAME"}
+  name: jupyterhub-db # {"$openapi":"JUPYTERHUB_STORAGE_NAME"}
 spec:
   ports:
   - name: 5432-tcp
@@ -11,5 +11,5 @@ spec:
     protocol: TCP
     targetPort: 5432
   selector:
-    app: jupyterhub # {"$openapi":"APPLICATION_NAME"}
-    deploymentconfig: jupyterhub-db # {"$openapi":"APPLICATION_DB_NAME"}
+    app: jupyterhub # {"$openapi":"JUPYTERHUB_NAME"}
+    deploymentconfig: jupyterhub-db # {"$openapi":"JUPYTERHUB_STORAGE_NAME"}

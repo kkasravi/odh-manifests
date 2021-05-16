@@ -14,33 +14,6 @@ resources:
 - jupyterhub-rolebinding.yaml
 - jupyterhub-nodereader-rolebinding.yaml
 - jupyterhub-route.yaml
-- jupyterhub-singleuser-profiles-configmap.yaml
-- jupyterhub-singleuser-profiles-sizes-configmap.yaml
-- jupyterhub-spark-operator-configmap.yaml
-- jupyterhub-groups-configmap.yaml
 commonLabels:
   opendatahub.io/component: "true"
-  component.opendatahub.io/name: jupyterhub # {"$openapi":"APPLICATION_NAME"}
-configMapGenerator:
-- name: parameters
-  envs:
-  - params.env
-generatorOptions:
-  disableNameSuffixHash: true
-vars:
-- name: s3_endpoint_url
-  objref:
-    kind: ConfigMap
-    name: parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.s3_endpoint_url
-- name: jupyterhub_secret
-  objref:
-    kind: ConfigMap
-    name: parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.jupyterhub_secret
-configurations:
-- params.yaml
+  component.opendatahub.io/name: jupyterhub # {"$openapi":"JUPYTERHUB_NAME"}

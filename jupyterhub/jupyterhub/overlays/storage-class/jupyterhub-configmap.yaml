@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: jupyterhub-cfg # {"$openapi":"APPLICATION_CFG_NAME"}
-data:
-  storage_class: gcp # {"$openapi":"STORAGE_CLASS"}

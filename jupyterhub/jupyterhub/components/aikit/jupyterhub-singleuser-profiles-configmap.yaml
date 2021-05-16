@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: odh-aikit
+  labels:
+    jupyterhub: singleuser-profiles
+data:
+  jupyterhub-singleuser-profiles.yaml: |
+    profiles:
+    - name: AIKit Notebook
+      images:
+      - 's2i-lab-elyra:v0.0.8'
+      users:
+      - kkasravi
+      env:
+      - name: JUPYTER_PRELOAD_REPOS
+        value: https://github.com/oneapi-src/oneAPI-samples
+      - name: JUPYTER_WORKSPACE_PATH
+        value: oneAPI-samples/AI-and-Analytics

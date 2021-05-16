@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- jupyterhub/overrides/overlays/jupyterhub-deployment-patch
+- overlays/odh
 - notebook-images/overlays/additional
 namespace: kam # {"$openapi":"NAMESPACE_NAME"}

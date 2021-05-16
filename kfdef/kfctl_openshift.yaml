@@ -83,11 +83,9 @@ spec:
         path: jupyterhub/jupyterhub
     name: jupyterhub
   - kustomizeConfig:
-      overlays:
-        - jupyterhub-deployment-patch
       repoRef:
         name: kf-jupyterhub-patch
-        path: jupyterhub/jupyterhub/overrides
+        path: jupyterhub
     name: jupyterhub
   - kustomizeConfig:
       overlays:
