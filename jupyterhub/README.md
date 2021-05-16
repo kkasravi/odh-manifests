@@ -7,9 +7,41 @@ JupyterHub comes with 2 components:
 
 ## JupyterHub
 
-Contains deployment manifests for JupyterHub instance.
+Contains deployment manifests for the jupyterhub KfDef Component.
 
-### Parameters
+### Configuration Values
+
+Default config values for jupyterhub are shown below. These settings leverage kustomize-v4.X and its Krmfile.
+
+
+|      NAME       |   VALUE    | SET BY |    DESCRIPTION     | COUNT | REQUIRED | IS SET |
+|-----------------|------------|--------|--------------------|-------|----------|--------|
+| GPU_MODE        |            | gitops | gpu mode           | 1     | Yes      | Yes    |
+| JUPYTERHUB_NAME | jupyterhub | gitops | jupyterhub name    | 56    | Yes      | Yes    |
+| NAMESPACE_NAME  | kam        | gitops | namespace name     | 1     | Yes      | Yes    |
+| STORAGE_CLASS   | gcp        | gitops | storage class name | 2     | Yes      | Yes    |
+-----------------------------|-------------------------------|--------------------
+         SUBSTITUTION        |            PATTERN            |    REFERENCES
+-----------------------------|-------------------------------|--------------------
+  JUPYTERHUB_CONFIGMAP_NAME  | ${JUPYTERHUB_NAME}-cfg        | [JUPYTERHUB_NAME]
+  JUPYTERHUB_IMAGE_NAME      | ${JUPYTERHUB_NAME}-img        | [JUPYTERHUB_NAME]
+  JUPYTERHUB_IMAGE_TAG       | ${JUPYTERHUB_NAME}-img:latest | [JUPYTERHUB_NAME]
+  JUPYTERHUB_NODEREADER_NAME | ${JUPYTERHUB_NAME}-nodereader | [JUPYTERHUB_NAME]
+  JUPYTERHUB_STORAGE_NAME    | ${JUPYTERHUB_NAME}-db         | [JUPYTERHUB_NAME]
+
+
+Below is an example of:
+
+1. Changing the default JUPYTERHUB_NAME of jupyterhub to foobarhub and the default namespace from redhat-ods-applications to foobar. 
+2. Verifying the values have been changed
+3. Deploying jupyterhub with these new values
+
+```
+$ kustomize cfg set . JUPYTERHUB_NAME foobarhub -R
+$ kustomize cfg set . NAMESPACE_NAME foobar -R
+$ kustomize cfg list-setters . --include-subst -R --markdown
+$ kustomize build | kubectl apply -f - # deploy
+```
 
 JupyterHub component comes with 2 parameters exposed vie KFDef.
 

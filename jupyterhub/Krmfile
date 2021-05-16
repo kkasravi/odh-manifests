@@ -10,6 +10,7 @@ openAPI:
           value: kam
           isSet: true
           required: true
+          setBy: gitops
     io.k8s.cli.setters.JUPYTERHUB_NAME:
       description: jupyterhub name
       x-k8s-cli:
@@ -18,14 +19,16 @@ openAPI:
           value: jupyterhub
           isSet: true
           required: true
+          setBy: gitops
     io.k8s.cli.setters.GPU_MODE:
-      description: gpu mode 
+      description: gpu mode
       x-k8s-cli:
         setter:
           name: GPU_MODE
           value: ""
           isSet: true
           required: true
+          setBy: gitops
     io.k8s.cli.setters.STORAGE_CLASS:
       description: storage class name
       x-k8s-cli:
@@ -34,14 +37,7 @@ openAPI:
           value: gcp
           isSet: true
           required: true
-    io.k8s.cli.setters.S3_ENDPOINT_URL:
-      description: s3 endpoint url
-      x-k8s-cli:
-        setter:
-          name: S3_ENDPOINT_URL
-          value: s3.odh.com
-          isSet: true
-          required: true
+          setBy: gitops
     io.k8s.cli.substitutions.JUPYTERHUB_CONFIGMAP_NAME:
       x-k8s-cli:
         substitution:

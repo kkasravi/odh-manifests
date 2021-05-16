@@ -4,8 +4,8 @@ metadata:
   name: jupyter-singleuser-profiles
 data:
   jupyterhub-singleuser-profiles.yaml: |
-      profiles:
-      - name: globals
-        env:
-          - name: S3_ENDPOINT_URL
-            value: s3.odh.com # {"$openapi":"S3_ENDPOINT_URL"}
+    profiles:
+    - name: globals
+      env:
+      - name: S3_ENDPOINT_URL
+        value: s3.odh.com
