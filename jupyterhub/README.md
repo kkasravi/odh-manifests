@@ -11,7 +11,7 @@ Contains deployment manifests for the jupyterhub KfDef Component.
 
 ### Configuration Values
 
-Default config values for jupyterhub are shown below. These settings leverage kustomize-v4.X and its Krmfile.
+Default config values for jupyterhub are shown below. These settings require kustomize-v4.X and leverage kustomize's Krmfile.
 
 
 |      NAME       |   VALUE    | SET BY |    DESCRIPTION     | COUNT | REQUIRED | IS SET |
