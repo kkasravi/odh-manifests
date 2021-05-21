@@ -9,6 +9,20 @@ JupyterHub comes with 2 components:
 
 Contains deployment manifests for the jupyterhub KfDef Component.
 
+
+jupyterhub
+├── base
+├── components
+│   ├── aikit
+│   ├── s3
+│   ├── sizes
+│   ├── spark
+│   └── ui
+└── overlays
+    ├── build
+    ├── odh
+    └── trigger-imagechange
+
 ### Configuration Values
 
 Default config values for jupyterhub are shown below. These settings require kustomize-v4.X and leverage kustomize's Krmfile.
@@ -43,7 +57,7 @@ $ kustomize cfg list-setters . --include-subst -R --markdown
 $ kustomize build | kubectl apply -f - # deploy
 ```
 
-JupyterHub component comes with 2 parameters exposed vie KFDef.
+JupyterHub component comes with 2 parameters exposed via KFDef.
 
 #### s3_endpoint_url
 
@@ -77,7 +91,6 @@ A Secret containing configuration values like JupyterHub DB password or COOKIE_S
         path: jupyterhub/jupyterhub
     name: jupyterhub
 ```
-
 
 ### Overlays
 

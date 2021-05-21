@@ -9,11 +9,9 @@ data:
     profiles:
     - name: AIKit Notebook
       images:
-      - 's2i-lab-elyra:v0.0.8'
+      - 'kam-aikit-notebook:v0.0.1'
       users:
       - kkasravi
       env:
       - name: JUPYTER_PRELOAD_REPOS
-        value: https://github.com/oneapi-src/oneAPI-samples
-      - name: JUPYTER_WORKSPACE_PATH
-        value: oneAPI-samples/AI-and-Analytics
+        value: https://github.com/IntelAI/models,https://github.com/preethivenkatesh/oneAPI-samples
