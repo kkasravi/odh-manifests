@@ -39,9 +39,9 @@ spec:
           value: /opt/app-root/builder/run
         envFrom:
         - secretRef:
-          name: jupyterhub # {"$openapi":"JUPYTERHUB_SECRET_NAME"}
+            name: jupyterhub # {"$openapi":"JUPYTERHUB_SECRET_NAME"}
         - configMapRef:
-          name: jupyterhub-cfg # {"$openapi":"JUPYTERHUB_CONFIGMAP_NAME"}
+            name: jupyterhub-cfg # {"$openapi":"JUPYTERHUB_CONFIGMAP_NAME"}
         image: jupyterhub-img:latest # {"$openapi":"JUPYTERHUB_IMAGE_TAG"}
         ports:
         - containerPort: 8080
@@ -57,7 +57,7 @@ spec:
         - wait-for-database
         envFrom:
         - secretRef:
-          name: jupyterhub # {"$openapi":"JUPYTERHUB_SECRET_NAME"}
+            name: jupyterhub # {"$openapi":"JUPYTERHUB_SECRET_NAME"}
         image: jupyterhub-img:latest # {"$openapi":"JUPYTERHUB_IMAGE_TAG"}
         name: wait-for-database
         resources:

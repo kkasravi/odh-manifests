@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-commonLabels:
-  app: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
 resources:
 - clusterrolebinding.yaml
 - ../../base
+commonLabels:
+  app: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
 patchesJson6902:
 - path: deployment.patch
   target:
