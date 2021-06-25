@@ -46,7 +46,7 @@ $ kustomize cfg list-setters . --include-subst -R # lists setters
 $ kustomize cfg set . NAMESPACE_NAME <namespace> -R # default=redhat-ods-applications
 $ kustomize cfg set . DASHBOARD_NAME <dashboard-name> -R # default=odh-dashboard
 $ kustomize cfg list-setters . --include-subst -R # verify changes
-$ kustomize build | kubectl apply -f -  # deploy
+$ kubectl apply -k .  # deploy
 ```
 
 ##### Standalone cleanup:
@@ -54,11 +54,11 @@ $ kustomize build | kubectl apply -f -  # deploy
 This will leave the namespace and any resources not labeled with `app: <dashboard-name>`
 
 ```
-$ kustomize build | kubectl delete -f - -l 'app in (<dashboard-name>)'
+$ kubectl delete -k . -l 'app in (<dashboard-name>)'
 ```
 
 This will also delete the namespace
 
 ```
-$ kustomize build | kubectl delete -f - 
+$ kubectl delete -k . 
 ```
