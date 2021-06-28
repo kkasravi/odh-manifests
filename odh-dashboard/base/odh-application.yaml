@@ -41,4 +41,3 @@ spec:
   quickStart: create-jupyter-notebook
   getStartedLink: https://jupyterhub.readthedocs.io/en/stable/getting-started/index.html
   isEnabled: true
----

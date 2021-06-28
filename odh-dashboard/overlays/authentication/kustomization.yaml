@@ -4,27 +4,27 @@ resources:
   - clusterrolebinding.yaml
   - ../../base
 commonLabels:
-  app: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+  app: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}
 patchesJson6902:
   - path: deployment.patch
     target:
       group: apps
       version: v1
       kind: Deployment
-      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+      name: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - path: service-account.patch
     target:
       kind: ServiceAccount
       version: v1
-      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+      name: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - path: service.patch
     target:
       kind: Service
       version: v1
-      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+      name: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}
   - path: route.patch
     target:
       group: route.openshift.io
       version: v1
       kind: Route
-      name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+      name: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}

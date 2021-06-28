@@ -5,7 +5,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: $(DASHBOARD_NAME)
-    namespace: kam # {"$openapi":"NAMESPACE_NAME"}
+    namespace: redhat-ods-applications # {"$openapi":"NAMESPACE_NAME"}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

@@ -24,17 +24,16 @@ set-route-namespace::
 	kustomize cfg set . ROUTE_NAMESPACE $(ROUTE_NAMESPACE) -R
 
 set-image::
-	kustomize cfg set . IMAGE_NAME $(IMAGE_NAME) -R
-	kustomize cfg set . TAG_NAME $(TAG_NAME) -R
+	kustomize cfg set . IMAGE_TAG $(IMAGE_NAME):$(TAG_NAME) -R
 
 set-replicas::
 	kustomize cfg set . REPLICAS $(REPLICAS) -R
 
 deploy: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	kustomize build | kubectl apply -f - && unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
+	kubectl apply -k . && unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
 undeploy:output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	kustomize build | kubectl delete -f - -l 'app in ('$(DASHBOARD_NAME)')'
+	kubectl delete -k . -l 'app in ('$(DASHBOARD_NAME)')' && unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
 reset: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
 

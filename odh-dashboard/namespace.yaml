@@ -1,6 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kam # {"$openapi":"NAMESPACE_NAME"}
+  name: redhat-ods-applications # {"$openapi":"NAMESPACE_NAME"}
   labels:
-    dashboard-name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+    dashboard-name: odh-dashboard # {"$openapi":"DASHBOARD_NAME"}
