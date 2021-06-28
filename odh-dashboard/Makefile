@@ -30,10 +30,12 @@ set-replicas::
 	kustomize cfg set . REPLICAS $(REPLICAS) -R
 
 deploy: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	kubectl apply -k . && unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
+	@kubectl apply -k . || exit 0
+	@unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
 undeploy:output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	kubectl delete -k . -l 'app in ('$(DASHBOARD_NAME)')' && unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
+	@kubectl delete -k . -l 'app in ('$(DASHBOARD_NAME)')' || exit 0
+	@unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
 reset: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
 
