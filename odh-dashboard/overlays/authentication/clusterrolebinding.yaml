@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-   name: $(DASHBOARD_NAME)-auth-delegator
+  name: $(DASHBOARD_NAME)-auth-delegator
 subjects:
   - kind: ServiceAccount
     name: $(DASHBOARD_NAME)

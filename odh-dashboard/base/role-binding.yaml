@@ -7,5 +7,5 @@ roleRef:
   kind: Role
   name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
 subjects:
-- kind: ServiceAccount
-  name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+  - kind: ServiceAccount
+    name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}

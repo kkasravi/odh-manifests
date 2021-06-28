@@ -4,17 +4,17 @@ resources:
 - namespace.yaml
 - overlays/authentication
 vars:
-- name: DASHBOARD_NAME
+- fieldref:
+    fieldPath: metadata.labels.dashboard-name
+  name: DASHBOARD_NAME
   objref:
-    kind: Namespace
-    name: kam # {"$openapi":"NAMESPACE_NAME"}
     apiVersion: v1
-  fieldref:
-    fieldpath: metadata.labels.dashboard-name
+    kind: Namespace
+    name: kam
 configurations:
 - varreference.yaml
 images:
 - name: s2i-odh-dashboard
-  newName: s2i-kam-dashboard # {"$openapi":"IMAGE_NAME"}
-  newTag: v0.0.1 # {"$openapi":"TAG_NAME"}
-namespace: kam # {"$openapi":"NAMESPACE_NAME"}
+  newName: s2i-kam-dashboard
+  newTag: v0.0.1
+namespace: kam
