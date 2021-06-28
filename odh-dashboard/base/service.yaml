@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+spec:
+  selector:
+    deployment: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+  ports:
+  - name: http
+    protocol: TCP
+    targetPort: 8080
+    port: 8080

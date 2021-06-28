@@ -18,6 +18,14 @@ openAPI:
           value: kam
           isSet: true
           required: true
+    io.k8s.cli.setters.REPLICAS:
+      type: integer
+      description: replica number
+      x-k8s-cli:
+        setter:
+          name: REPLICAS
+          value: "1"
+          isSet: true
     io.k8s.cli.setters.IMAGE_NAME:
       description: image name
       x-k8s-cli:

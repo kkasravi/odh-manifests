@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+spec:
+  replicas: 1 # {"$openapi":"REPLICAS"}
+  selector:
+    matchLabels:
+      deployment: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+  template:
+    metadata:
+      labels:
+        deployment: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+    spec:
+      serviceAccount: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+      containers:
+        - name: kam-dashboard # {"$openapi":"DASHBOARD_NAME"}
+          image: s2i-odh-dashboard:v0.0.1 # {"$openapi":"IMAGE_TAG"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 200m
+              memory: 100Mi
+            limits:
+              cpu: 400m
+              memory: 400Mi
+          livenessProbe:
+            httpGet:
+              path: /api/status
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 15
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 15
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3

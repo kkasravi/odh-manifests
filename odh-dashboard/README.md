@@ -45,6 +45,7 @@ If you would like to configure the dashboard to require authentication:
 $ kustomize cfg list-setters . --include-subst -R # lists setters
 $ kustomize cfg set . NAMESPACE_NAME <namespace> -R # default=redhat-ods-applications
 $ kustomize cfg set . DASHBOARD_NAME <dashboard-name> -R # default=odh-dashboard
+$ kustomize cfg set . REPLICAS 2 -R # default=2
 $ kustomize cfg list-setters . --include-subst -R # verify changes
 $ kubectl apply -k .  # deploy
 ```
