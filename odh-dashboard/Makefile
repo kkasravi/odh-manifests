@@ -17,7 +17,6 @@ set-dashboard-name::
 	kustomize cfg set . DASHBOARD_NAME $(DASHBOARD_NAME) -R || exit 0
 
 set-namespace::
-	kustomize edit set namespace $(OC_PROJECT)
 	kustomize cfg set . NAMESPACE_NAME $(OC_PROJECT) -R || exit 0
 
 set-route-namespace::

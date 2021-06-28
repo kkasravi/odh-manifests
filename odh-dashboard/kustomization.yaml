@@ -1,20 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- namespace.yaml
-- overlays/authentication
+  - namespace.yaml
+  - overlays/authentication
 vars:
-- fieldref:
-    fieldPath: metadata.labels.dashboard-name
-  name: DASHBOARD_NAME
-  objref:
-    apiVersion: v1
-    kind: Namespace
-    name: kam
+  - fieldref:
+      fieldPath: metadata.labels.dashboard-name
+    name: DASHBOARD_NAME
+    objref:
+      apiVersion: v1
+      kind: Namespace
+      name: redhat-ods-applications # {"$openapi":"NAMESPACE_NAME"}
 configurations:
-- varreference.yaml
-images:
-- name: s2i-odh-dashboard
-  newName: s2i-kam-dashboard
-  newTag: v0.0.1
-namespace: redhat-ods-applications
+  - varreference.yaml
+namespace: redhat-ods-applications # {"$openapi":"NAMESPACE_NAME"}
