@@ -11,31 +11,32 @@ output-vars::
 	@echo OC_PROJECT=$(OC_PROJECT) DASHBOARD_NAME=$(DASHBOARD_NAME) ROUTE_NAMESPACE=$(ROUTE_NAMESPACE) IMAGE_NAME=$(IMAGE_NAME) TAG_NAME=$(TAG_NAME) REPLICAS=$(REPLICAS)
 
 set-project::
-	oc project $(OC_PROJECT)
+	oc project $(OC_PROJECT) || exit 0
 
 set-dashboard-name::
-	kustomize cfg set . DASHBOARD_NAME $(DASHBOARD_NAME) -R
+	kustomize cfg set . DASHBOARD_NAME $(DASHBOARD_NAME) -R || exit 0
 
 set-namespace::
 	kustomize edit set namespace $(OC_PROJECT)
-	kustomize cfg set . NAMESPACE_NAME $(OC_PROJECT) -R
+	kustomize cfg set . NAMESPACE_NAME $(OC_PROJECT) -R || exit 0
 
 set-route-namespace::
-	kustomize cfg set . ROUTE_NAMESPACE $(ROUTE_NAMESPACE) -R
+	kustomize cfg set . ROUTE_NAMESPACE $(ROUTE_NAMESPACE) -R || exit 0
 
 set-image::
-	kustomize cfg set . IMAGE_TAG $(IMAGE_NAME):$(TAG_NAME) -R
+	kustomize cfg set . IMAGE_NAME $(IMAGE_NAME) -R || exit 0
+	kustomize cfg set . TAG_NAME $(TAG_NAME) -R || exit 0
 
 set-replicas::
 	kustomize cfg set . REPLICAS $(REPLICAS) -R
 
 deploy: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	@kubectl apply -k . || exit 0
-	@unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
+	kubectl apply -k . || exit 0
+	unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
-undeploy:output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
-	@kubectl delete -k . -l 'app in ('$(DASHBOARD_NAME)')' || exit 0
-	@unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
+undeploy: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
+	kubectl delete -k . -l 'app in ('$(DASHBOARD_NAME)')' || exit 0
+	unset OC_PROJECT DASHBOARD_NAME ROUTE_NAMESPACE IMAGE_NAME TAG_NAME REPLICAS && make reset
 
 reset: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
 
