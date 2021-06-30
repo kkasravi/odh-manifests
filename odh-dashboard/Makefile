@@ -14,20 +14,20 @@ set-project::
 	oc project $(OC_PROJECT) || exit 0
 
 set-dashboard-name::
-	kustomize cfg set . DASHBOARD_NAME $(DASHBOARD_NAME) -R 1>/dev/null || exit 0
+	@kustomize cfg set . DASHBOARD_NAME $(DASHBOARD_NAME) -R 1>/dev/null || exit 0
 
 set-namespace::
-	kustomize cfg set . NAMESPACE_NAME $(OC_PROJECT) -R 1>/dev/null || exit 0
+	@kustomize cfg set . NAMESPACE_NAME $(OC_PROJECT) -R 1>/dev/null || exit 0
 
 set-route-namespace::
-	kustomize cfg set . ROUTE_NAMESPACE $(ROUTE_NAMESPACE) -R 1>/dev/null || exit 0
+	@kustomize cfg set . ROUTE_NAMESPACE $(ROUTE_NAMESPACE) -R 1>/dev/null || exit 0
 
 set-image::
-	kustomize cfg set . IMAGE_NAME $(IMAGE_NAME) -R 1>/dev/null || exit 0
-	kustomize cfg set . TAG_NAME $(TAG_NAME) -R 1>/dev/null || exit 0
+	@kustomize cfg set . IMAGE_NAME $(IMAGE_NAME) -R 1>/dev/null || exit 0
+	@kustomize cfg set . TAG_NAME $(TAG_NAME) -R 1>/dev/null || exit 0
 
 set-replicas::
-	kustomize cfg set . REPLICAS $(REPLICAS) -R 1>/dev/null || exit 0
+	@kustomize cfg set . REPLICAS $(REPLICAS) -R 1>/dev/null || exit 0
 
 deploy: output-vars set-project set-dashboard-name set-namespace set-route-namespace set-image set-replicas
 	kubectl apply -k . || exit 0
