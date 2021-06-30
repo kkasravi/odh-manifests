@@ -3,7 +3,7 @@ kind: OdhApplication
 metadata:
   name: aikit
 spec:
-  displayName: Intel® oneAPI AI Analytics Toolkit Container
+  displayName: Intel® oneAPI AI Analytics Toolkit
   provider: Intel®
   description: |-
     A comprehensive set of interoperable AI software tools, built using oneAPI, to provide drop-in acceleration for end to end data science and machine learning pipelines on Intel architectures with familiar Python libraries and frameworks.
@@ -15,9 +15,8 @@ spec:
   docsLink: https://software.intel.com/content/www/us/en/develop/tools/oneapi/ai-analytics-toolkit.html
   category: Intel® managed
   support: Intel®
-  quickStart: create-aikit-notebook
+  quickStart: aikit-notebook
   getStartedLink: https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-ai-linux/top.html
-  isEnabled: true
 ---
 apiVersion: applications.console.openshift.io/v1alpha1
 kind: OdhApplication
@@ -40,4 +39,3 @@ spec:
   docsLink: https://jupyter.org/hub
   quickStart: create-jupyter-notebook
   getStartedLink: https://jupyterhub.readthedocs.io/en/stable/getting-started/index.html
-  isEnabled: true
